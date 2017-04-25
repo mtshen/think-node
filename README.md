@@ -17,6 +17,7 @@
  1. 下载项目, 并放置在合适的路径中
  2. 在项目根目录执行 node bin/server
  3. 打开浏览器转到127.0.0.1 如果打开页面中提示 hello ThinkNode 则安装成功
+ > 也可以使用 npm install think-node 进行安装
 
 ### 配置文件
  文件位置 : ./option.json
