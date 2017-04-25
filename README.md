@@ -25,11 +25,11 @@
  3. default: 首页地址, 默认 `index.html`
  4. staticResource: 静态资源地址, 可以使用glob匹配, 默认`["**/*.*"]`
  5. log: 日志相关配置
-	5.1. path: 日志存储位置, 默认 `${PATH}\\log\\`
-	5.2. time: 日志自动存储间隔(如果auto为true, 则该参数无效)
-	5.3. auto: 是否实时保存日志, 默认 `true`
-	5.4. fileTime: 每个文件的时间分割(ms), 默认 3600000
+  - path: 日志存储位置, 默认 `${PATH}\\log\\`
+  - time: 日志自动存储间隔(如果auto为true, 则该参数无效)
+  - auto: 是否实时保存日志, 默认 `true`
+  - fileTime: 每个文件的时间分割(ms), 默认 3600000
  6. user: 用户路由相关配置
- 	6.1 path: 用户路由目录, 默认`${PATH}\\user\\`
+  - path: 用户路由目录, 默认`${PATH}\\user\\`
  
 ## Thank!
