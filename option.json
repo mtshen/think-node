@@ -1,0 +1,25 @@
+{
+    // 网站端口号
+    "port": 80,
+    // 网站地址路径
+    "path": "${PATH}\\www\\",
+    // 首页地址与备用首页地址, 可以添加多个地址
+    "default": ["index.html", "index3.html"],
+    // 静态资源地址, 可以使用glob匹配
+    "staticResource": ["**/*.*"],
+    // 日志相关
+    "log": {
+        // 日志存储目录
+        "path": "${PATH}\\log\\",
+        // 日志自动存储间隔(如果auto为true, 则该参数无效)
+        "time": 0,
+        // 是否实时保存日志
+        "auto": false,
+        // 每个文件的时间分割(ms)
+        "fileTime": 3600000
+    },
+    // 后台文件地址
+    "user": {
+        "path": "${PATH}\\user\\"
+    }
+}

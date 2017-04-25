@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ThinkNode</title>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+    <h1></h1>
+    <script src="./js/post.js"></script>
+    <script>
+        request({
+            url: 'hello',
+            success: function(json) {
+                document.getElementsByTagName('h1')[0].innerHTML = json.data;
+            }
+        });
+    </script>
+</body>
+</html>
