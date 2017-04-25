@@ -1,3 +1,7 @@
+[![npm version](https://img.shields.io/npm/v/think-node.svg?style=flat)](https://badge.fury.io/js/think-node)
+[![Build Status](https://travis-ci.org/richenlin/think-node.svg?branch=master)](https://travis-ci.org/richenlin/think-node)
+[![Dependency Status](https://david-dm.org/richenlin/think-node.svg)](https://david-dm.org/richenlin/think-node)
+
 # ThinkNode
 	ThinkNode是一个免费开源的，快速、简单的面向对象的轻量级Node开发框架
 
