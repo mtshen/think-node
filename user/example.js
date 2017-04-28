@@ -1,9 +1,9 @@
 answer({
     url: '/hello',
-    callback: function(data) {
+    callback: (data) => {
         return {
             status: 1,
-            data: 'hello thinkNode!',
+            data: 'hello ThinkNode!',
             info: '请求成功'
         }
     }

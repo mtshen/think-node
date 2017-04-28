@@ -1,20 +1,27 @@
 const fs = require('fs');
 
-// PATH
+// 预设内容 PATH
 let PATH = __dirname.replace('/', '\\').split('\\');
 PATH.pop();
 PATH = PATH.join('\\\\');
+
+// 获取option.json内容
 let data = fs.readFileSync(`${PATH}/option.json`, 'utf-8').replace(/\/\/.*\r?\n?/g, '');
 
-// 预设内容
+// 定义预设内容
 const PRESET = { PATH };
 
+// 将 option.js 转换成可解析内容
 for (var key in PRESET) {
     let re = new RegExp('\\$\\{' + key + '\\}', 'g');
     (data = data.replace(re, PRESET[key]));
 }
 
-// 初始化全局变量
-global.END = Symbol('end');
-global.NODATA = Symbol('nodata');
-module.exports = JSON.parse(data);
+// 解析
+const option = JSON.parse(data);
+
+// 内存回收
+data = null;
+PATH = null;
+
+module.exports = option;

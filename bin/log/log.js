@@ -70,9 +70,21 @@ function createFileLog({time = getDate(), title = '', level = 'log', log = '', u
 
 let startService = () => `* [127.0.0.1:${option.port}] STAST SERVICE - ${getDate()} *\r\n`;
 let endService = () => `\r\n* [127.0.0.1:${option.port}] END   SERVICE - ${getDate()} *`;
-
+/**
+ * 利用 request 和 response 属性自动生成log日志
+ */
+log.send = (request = {}, response = {}) => {
+    createFileLog({
+        title: '新的请求',
+        url: request.url,
+        type: request.method,
+        level: 'log'
+    });
+};
 // 结束服务监听
-process.on('exit', () => log(false, true));
-log(true, true);
+process.on('SIGINT', () => {
+    save();
+    process.exit();
+});
 
 module.exports = log;
