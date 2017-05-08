@@ -2,22 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ThinkNode</title>
+    <title>ThinkNode演示</title>
     <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
     <h1></h1>
-    <script src="./js/post.js"></script>
     <script>
-        request({
-            url: 'hello',
-            data: {
-                "{": "}"
-            },
-            success: function(json) {
-                document.getElementsByTagName('h1')[0].innerHTML = json.data;
+        /* 一个简易的请求函数 */
+        function sayHello(name) {
+            var request = new XMLHttpRequest;
+            request.open('post', 'hello');
+            request.send(JSON.stringify({"info": name}));
+            request.onreadystatechange = function() {
+                if (this.readyState === 4 && this.status === 200) {
+                    var text = JSON.parse(this.responseText).data;
+                    document.getElementsByTagName('h1')[0].innerHTML = text;
+                }
             }
-        });
+        };
+
+        sayHello('ThinkNode');
     </script>
 </body>
 </html>
