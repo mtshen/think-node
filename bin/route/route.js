@@ -6,7 +6,7 @@ const minimatch = require("minimatch");
 const url = require("url");
 const fs = require("fs");
 const path = require("path");
-
+const querystring = require('querystring');
 // path
 const $path = option.path;
 const $userPath = option.user.path;
@@ -33,7 +33,9 @@ function initUserRoute(userPath = $userPath) {
 let route = (request, response, requestData) => {
     const reqUrlOption = url.parse(request.url, true);
     const {pathname, query} = reqUrlOption;
-
+    const {method} = request;
+    // 解析data
+    requestData = JSONParseData((method === 'POST' ? requestData : query));
     // 初始化加载
     if (pathname === '/')
         return getDefaultPath(response);
@@ -44,11 +46,11 @@ let route = (request, response, requestData) => {
         let {callback} = data;
         let cbFlag;
         try {
-            cbFlag = callback ? callback.call({
+            cbFlag = callback ? callback(requestData, {
                 url: pathname,
-                type: request.method,
+                type: method,
                 request, response
-            }, requestData) : true;
+            }) : true;
         } catch (error) {
             return console.log('出现了一个异常!', error);
         };
@@ -110,6 +112,14 @@ function getDefaultPath(response, index = 0) {
         response.writeHead(200, {"Content-Type": type.get('.' + $default.split('.').pop())});
 		response.end((typeof data === 'object' ? JSON.stringify(data) : data));
     });
+};
+
+// 将get内容转换成data
+function JSONParseData(data) {
+    if (!data || typeof data === 'object') return data;
+    let result = /^\{.*\}$/.test(data) ?
+        JSON.parse(data) : querystring.parse(data);
+    return result;
 };
 
 initUserRoute();

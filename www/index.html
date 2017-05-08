@@ -11,6 +11,9 @@
     <script>
         request({
             url: 'hello',
+            data: {
+                "{": "}"
+            },
             success: function(json) {
                 document.getElementsByTagName('h1')[0].innerHTML = json.data;
             }

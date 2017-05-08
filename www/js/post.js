@@ -221,7 +221,7 @@ var request = (function() {
 
     var requestBranch = {
         get: function(option) {
-            option.url = option.url + param(option.data);
+            option.url = option.url + '?' + param(option.data);
             return branchFn(option, undefined, 'get');
         },
         post: function(option) {

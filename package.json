@@ -11,5 +11,7 @@
     "ThinkNode"
   ],
   "author": "mtshen",
-  "devDependencies": {}
+  "devDependencies": {
+    "minimatch": "^3.0.4"
+  }
 }
