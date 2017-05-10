@@ -2,11 +2,13 @@ const option = require('./../option');
 const answer = require('./answer');
 const type = require('./contentType');
 const log = require("./../log/log");
+const staticFile = require("./../cache/staticFile");
 const minimatch = require("minimatch");
 const url = require("url");
 const fs = require("fs");
 const path = require("path");
 const querystring = require('querystring');
+
 // path
 const $path = option.path;
 const $userPath = option.user.path;
@@ -75,7 +77,8 @@ let route = (request, response, requestData) => {
         for (let i = staticResource.length - 1; i >= 0; i--) {
             let staticPath = staticResource[i];
             if (minimatch(pathname, staticPath)){
-               fs.readFile($path + pathname, function(err, data) {
+                let fsName = $path + pathname;
+                staticFile(fsName, function(err, data) {
                     if (err) {
                         response.writeHead(404);
                         response.end();

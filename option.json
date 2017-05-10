@@ -4,7 +4,7 @@
     // 网站地址路径
     "path": "${PATH}\\www\\",
     // 首页地址与备用首页地址, 可以添加多个地址
-    "default": ["index.html", "index3.html"],
+    "default": ["index.html"],
     // 静态资源地址, 可以使用glob匹配
     "staticResource": ["**/*.*"],
     // 日志相关
@@ -21,5 +21,6 @@
     // 后台文件地址
     "user": {
         "path": "${PATH}\\user\\"
-    }
+    },
+    "debugger": true
 }

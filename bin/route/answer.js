@@ -6,7 +6,7 @@ const Answer = new Map;
  * @param {string | object} url 
  * @param {string} type 
  * @param {object} data 
- * @param {function} callback 
+ * @param {function} callback
  */
 let main = (url = {}, ContentType, callback) => {
 	let answerOption = {};

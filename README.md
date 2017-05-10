@@ -11,8 +11,9 @@
 ### 快速入门
 
  1. 下载项目, 并放置在合适的路径中
- 2. 在项目根目录执行 node bin/server
- 3. 打开浏览器转到127.0.0.1 如果打开页面中提示 hello ThinkNode 则安装成功
+ 2. 执行 shell: npm install
+ 3. 执行 shell: node bin/server
+ 4. 打开浏览器转到127.0.0.1 如果打开页面中提示 hello ThinkNode 则安装成功
  > 也可以使用 npm install think-node 进行安装
 
 ### 配置文件
@@ -34,5 +35,56 @@
  
  6. user: 用户路由相关配置
   	- path: 用户路由目录, 默认`${PATH}\\user\\`
- 
+ 7. debugger: 是否是调试模式, 默认`false`
+ 	- 如果是false, 文件将加入到缓存, 页面不会再实时更新, 但是效率将大大提高
+	- 如果是true, 文件的更新将能够被捕捉, 用户测试使用
+
+### 自定义接口
+如果配置的用户路由(user.path)参数, 在此目录下创建一个js
+例如设置为
+```
+	"user": {
+		"path": "${PATH}\\js\\"
+	}
+```
+
+在根目录下的js文件夹下新建一个js(命名没有限制), 使用 answer 函数来定义接口
+- `url` : 接口名
+- `ContentType` : 文件的ContentType, 可不写, 会自动识别
+- `callback` : 该接口接收到请求后的回调函数
+
+```
+	answer({
+		url: '/abc',
+		callback: (data = {}, think) => {
+			return {
+				status: 1,
+				data: `hello ${data.info || ''}!`,
+				info: '请求成功!'
+			}
+		}
+	});
+```
+
+也可以这样写
+```
+	answer('/abc', undefined, (data = {}, think) => {
+		return {
+			status: 1,
+			data: `hello ${data.info || ''}!`,
+			info: '请求成功!'
+		}
+	});
+```
+
+如果不需要返回值可以在callback中返回 `END`
+```
+return END;
+```
+
+如果需要返回一个404错误可以在callback中返回 `NODATA`
+```
+return NODATA;
+```
+
 ## Thank!
