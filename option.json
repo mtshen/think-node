@@ -3,6 +3,7 @@
 */
 {
     "port": 80,
+    "ip": "",
     "path": "${PATH}/www",
     "default": ["index.html"],
     "staticResource": ["**/*.*"],
