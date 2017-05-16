@@ -1,6 +1,6 @@
 {
     "+type": "application/octet-stream",
-    "+utf8": ["js", "css", "html", "ts", "less", "sass", "xml", "htm", "text", "json", "md"],
+    "+utf8": [".js", ".css", ".html", ".ts", ".less", ".sass", ".xml", ".htm", ".text", ".json", ".md"],
     ".tif": "application/x-tif",
     ".001": "application/x-001",
     ".301": "application/x-301",

@@ -84,8 +84,8 @@ let route = (request, response, requestData) => {
                         response.end();
                         log.send(request, response, false);
                     } else {
-                        let hz = pathname.split('.').pop();
-                        response.writeHead(200, {"Content-Type": type.get('.' + hz)});
+                        let hz = path.extname(pathname);
+                        response.writeHead(200, {"Content-Type": type.get(hz)});
                         type.hasUtf8(hz) && (data = data.toString());
                         response.end(data);
                         log.send(request, response, true);
@@ -112,7 +112,7 @@ function getDefaultPath(response, index = 0) {
 
     fs.readFile($path + $default, 'utf-8', function(err, data) {
         if (err) return getDefaultPath(response, index + 1);
-        response.writeHead(200, {"Content-Type": type.get('.' + $default.split('.').pop())});
+        response.writeHead(200, {"Content-Type": type.get(path.extname($default))});
 		response.end((typeof data === 'object' ? JSON.stringify(data) : data));
     });
 };
