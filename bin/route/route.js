@@ -108,6 +108,7 @@ function getDefaultPath(response, index = 0) {
     if (!$default) {
         response.writeHead(404);
 	    response.end();
+        return false;
     }
     console.log($path + $default);
     fs.readFile($path + $default, 'utf-8', function(err, data) {
