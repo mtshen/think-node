@@ -36,6 +36,7 @@ let route = (request, response, requestData) => {
     const reqUrlOption = url.parse(request.url, true);
     const {pathname, query} = reqUrlOption;
     const {method} = request;
+    console.log('URL: ', pathname);
     // 解析data
     requestData = JSONParseData((method === 'POST' ? requestData : query));
     // 初始化加载
@@ -78,6 +79,7 @@ let route = (request, response, requestData) => {
             let staticPath = staticResource[i];
             if (minimatch(pathname, staticPath)){
                 let fsName = $path + pathname;
+                console.log('静态取值 ->', fsName);
                 staticFile(fsName, function(err, data) {
                     if (err) {
                         response.writeHead(404);
