@@ -10,11 +10,6 @@ function getOption() {
     // 获取option.json内容
     let data = fs.readFileSync(path.join(PATH, 'option.json'), 'utf-8');
 
-    // 清除注释    
-    data = data.replace(notes, function(word) {
-        return /^\/{2,}/.test(word) || /^\/\*/.test(word) ? "" : word;  
-    });
-
     // 定义预设内容
     const PRESET = { PATH };
 

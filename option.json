@@ -1,9 +1,6 @@
-/*
-    port: 端口
-*/
 {
     "port": 80,
-    "ip": "",
+    "ip": "0.0.0.0",
     "path": "${PATH}/www",
     "default": ["index.html"],
     "staticResource": ["**/*.*"],
