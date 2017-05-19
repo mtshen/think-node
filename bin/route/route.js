@@ -110,8 +110,7 @@ function getDefaultPath(response, index = 0) {
 	    response.end();
         return false;
     }
-    console.log($path + $default);
-    fs.readFile($path + $default, 'utf-8', function(err, data) {
+    fs.readFile(path.join($path, $default), 'utf-8', function(err, data) {
         if (err) return getDefaultPath(response, index + 1);
         response.writeHead(200, {"Content-Type": type.get(path.extname($default))});
 		response.end((typeof data === 'object' ? JSON.stringify(data) : data));
