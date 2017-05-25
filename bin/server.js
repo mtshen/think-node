@@ -18,5 +18,5 @@ if (cluster.isMaster) {
         request.on('data', (chunk) => { requestData += chunk; });
         request.on('end', () => route(request, response, requestData));
     }).listen(option.port, option.ip || undefined);
-    console.log(`ThinkNode[127.0.0.1:${option.port}]: thread${cluster.worker.id} start!`);
+    console.log(`ThinkNode[:${option.port}] thread${cluster.worker.id} start!`);
 }
