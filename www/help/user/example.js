@@ -1,6 +1,6 @@
 // ThinkNode演示
 
-answer({
+Think.answer({
     url: '/hello',
     callback: (data = {}, think) => {
         return {

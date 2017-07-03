@@ -1,6 +1,13 @@
 # ThinkNode[![npm version](https://img.shields.io/npm/v/think-node.svg?style=flat)](https://badge.fury.io/js/think-node)
 	ThinkNode是一个免费开源的，快速、简单的面向对象的轻量级Node开发框架
 
+## ThinkNode更新说明
+ - 修改option.json 为option.js
+ - 新增子域名系统, 快速生成子域
+ - 隐藏了log的记录, 进行重做
+ - 修改了注释, 新增了国际化提示
+ - 新增了一些参数
+
 ### 适用人群
 
  1. 需要快速搭建本地站点
@@ -38,6 +45,8 @@
  7. debugger: 是否是调试模式, 默认`false`
  	- 如果是false, 文件将加入到缓存, 页面不会再实时更新, 但是效率将大大提高
 	- 如果是true, 文件的更新将能够被捕捉, 用户测试使用
+
+ 8. offsprDomain: 是否开启子域名解析, 开启子域名解析之后, 将会自定把子域名解析为路径
 
 ### 自定义接口
 如果配置的用户路由(user.path)参数, 在此目录下创建一个js

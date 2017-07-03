@@ -2,24 +2,25 @@
 const glob = require("glob");
 const fs = require("fs");
 const path = require("path");
-const option = require('./../option');
-const CACHE_FILES = {};
-const _path = option.path;
-const _debugger = option.debugger;
-// 存储模式为 url: Buffer()
-// options 是可选的
 
-!_debugger && option.staticResource.forEach(function(globPath) {
-    glob(path.join(_path, globPath), function (err, files) {
+const CACHE_FILES = {};
+const userPath = (Think.option || {}).path;
+const staticResource = (Think.option || {}).staticResource || ['**/*.*'];
+const _debugger = Think.debugger;
+
+// 载入用户缓存
+!_debugger && staticResource.forEach((globPath) => {
+    glob(path.join(userPath, globPath),  (err, files) => {
         !err && files.forEach((fileName) => {
             fs.readFile(fileName, (err, fileData) => {
                 !err && (CACHE_FILES[path.join(fileName)] = new Buffer(fileData));
             });
         });
     })
-});
+}), __ISMASTER && console.log(ThinkInfo('loadCache').green);
 
-function getUrl(url, callback) {
+// 获取缓存内容
+Think.getCache = (url, callback) => {
     url = path.join(url);
     let urlData = CACHE_FILES[url];
     if (urlData !== undefined) {
@@ -28,5 +29,3 @@ function getUrl(url, callback) {
         fs.readFile(url, callback);
     }
 };
-
-module.exports = getUrl;

@@ -1,3 +1,4 @@
+// TODO 日志相关内容后期可能会更改
 const fs = require('fs');
 const option = require('./../option');
 
@@ -14,7 +15,7 @@ function log(config = {}, saveFlag) {
         !auto && time && setInterval(function() {
                 save();
             }, time);
-        console.info('服务器已启动, 日志持续打印中');
+
     } else if (config === false) {
         logData.push(endService());
     } else {
