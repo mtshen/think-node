@@ -1,99 +1,117 @@
 # ThinkNode[![npm version](https://img.shields.io/npm/v/think-node.svg?style=flat)](https://badge.fury.io/js/think-node)
 	ThinkNode是一个免费开源的，快速、简单的面向对象的轻量级Node开发框架
 
-## ThinkNode更新说明
- - 修改option.json 为option.js
- - 新增子域名系统, 快速生成子域
- - 隐藏了log的记录, 进行重做
- - 修改了注释, 新增了国际化提示
- - 新增了一些参数
+## ThinkNode 1.0 说明
+ #### 适用人群
+  1. 快速搭建本地站点
+  2. 快速接口调试
+  3. 快速搭建多子域的站点
+  4. 学习node路由
 
-### 适用人群
+ #### 示例
+  - 项目src中有2个示例作为参考
+  - 子域效果可以访问以下地址
+	1. think.mtshen.xin
+	2. help.mtshen.xin
 
- 1. 需要快速搭建本地站点
- 2. 研究node路由人员
- 3. 想要封装Node框架
- 4. 测试使用
+ #### 快速入门
+  1. 下载项目, 并放置在合适的路径中
+  2. 执行 shell: npm install 安装依赖插件
+  3. 执行 shell: node bin/server 进入127.0.0.1进行测试
 
-### 快速入门
+ #### 配置文件
+	文件位置 : ./option.js
+  1. `Think.header()`: 设置请求头, 默认 `'Content-Type:text/html; charset=utf-8'`, 可多次设置
+  2. `Think.timeZone()`: 设置时区, 默认 `'GMT'`
+  3. `Think.define()`: 自定义值, 在请求相应文件后会自动替换内容
+  4. `Think.lang()`: 国际化提示, 默认 `'zh'`
+  5. `Think.load()`: 服务器启动后自动开始执行
+  6. `Think.opt()`: 常用配置, 大小写不敏感
+	optName | optValue
+		  	 ---|---
+	   port	 	| 服务端口, 默认 80
+	   ip	 	| 服务ip地址, 默认 0.0.0.0
+	   path	 	| 网站根路径地址, 默认项目文件夹/www
+	   default	| 网站首页, 必须为数组, 默认['index.html', 'index.htm']
+	   staticReSource | 可请求文件限制, 默认['**/*.*'], 如果限制某些文件将无法被请求到
+	   log_path | 日志存储目录 *暂时不可用
+	   log_auto | 日志是否自动存储 *暂时不可用
+	   log_fileTime | 每个日志文件的最大存储范围 *暂不可用
+	   log_time | 日志自动存储间隔 *暂不可用
+	   user_path| 自定义的node文件地址
+	   debugger | 是否缓存文件, 建议测试的时候改成false
+	   offsprDomain | 是否开启子域, 默认false
 
- 1. 下载项目, 并放置在合适的路径中
- 2. 执行 shell: npm install
- 3. 执行 shell: node bin/server
- 4. 打开浏览器转到127.0.0.1 如果打开页面中提示 hello ThinkNode 则安装成功
- > 也可以使用 npm install think-node 进行安装
+ #### staticReSource 请求文件限制
+  > 当服务器中有些重要文件不希望公开时使用  
+  > 如服务器中有几个文件: a.js ,b.js ,c.js
+  > 如果不希望c.js被访问, 则执行Think.opt('staticReSource', ['a.js', 'b.js']);
 
-### 配置文件
- 文件位置 : ./option.json
- 
- ##### 配置文件中可以使用的变量:
-  - ${PATH} : ThinkNode根目录
+ #### debugger 缓存
+  > 开启缓存后, 加载文件速度将会大幅度提升, 但某个文件需要变动则需要重启服务   
+  > 所以建议在测试阶段关闭缓存, 在上线阶段开启缓存
 
- 1. port: 网站端口号, 默认 `80`
- 2. path: 网站地址路径, 默认 `${PATH}\\www\\`
- 3. default: 首页地址, 默认 `index.html`
- 4. staticResource: 静态资源地址, 可以使用glob匹配, 默认`["**/*.*"]`
- 5. log: 日志相关配置
- 
- 	- path: 日志存储位置, 默认 `${PATH}\\log\\`
-  	- time: 日志自动存储间隔(如果auto为true, 则该参数无效)
-  	- auto: 是否实时保存日志, 默认 `true`
-  	- fileTime: 每个文件的时间分割(ms), 默认 3600000
- 
- 6. user: 用户路由相关配置
-  	- path: 用户路由目录, 默认`${PATH}\\user\\`
- 7. debugger: 是否是调试模式, 默认`false`
- 	- 如果是false, 文件将加入到缓存, 页面不会再实时更新, 但是效率将大大提高
-	- 如果是true, 文件的更新将能够被捕捉, 用户测试使用
+ #### offsprDomain 子域
+  - 当你只有ip没有域名时不支持子域
 
- 8. offsprDomain: 是否开启子域名解析, 开启子域名解析之后, 将会自定把子域名解析为路径
+  > 当你的域名是 abc.com 时, 你想要用户访问www.abc.com 和访问 help.abc.com请求内容不同时, 可以开启子域
+  
+  > 开启子域后, 文件结构也需要发生变化, 此时设置的`path` 路径, 其中的每个文件夹, 会解析成子域文件夹, 每个子域文件夹中也需要进行配置, 需要增加一个文件option.json
 
-### 自定义接口
-如果配置的用户路由(user.path)参数, 在此目录下创建一个js
-例如设置为
-```
-	"user": {
-		"path": "${PATH}\\js\\"
-	}
-```
+  optName | optValue
+  -------|---------
+  path			| 子域网站地址, 相对路径
+  default		| 子域首页文件名, 需要传入数组
+  staticresource| 是否继续向下分发子域
+  user.path		| node文件位置
+  user.default	| 默认执行的node文件位置
+  herf			| 当staticresource为true时, 如果用户只输入了父级域名时, 自动转向一个子域名, 默认 www
 
-在根目录下的js文件夹下新建一个js(命名没有限制), 使用 answer 函数来定义接口
-- `url` : 接口名
-- `ContentType` : 文件的ContentType, 可不写, 会自动识别
-- `callback` : 该接口接收到请求后的回调函数
 
-```
-	answer({
-		url: '/abc',
-		callback: (data = {}, think) => {
-			return {
-				status: 1,
-				data: `hello ${data.info || ''}!`,
-				info: '请求成功!'
+ #### 快速设置node接口
+  - 使用 Think.answer 快速定义
+	```
+		Think.answer({
+			url: '/hello',
+			callback: (data = {}, think) => {
+				return {
+					status: 1,
+					data: `hello ${data.info || ''}!`,
+					info: '请求成功!'
+				}
 			}
-		}
-	});
-```
+		});
+	```
+   - 可传入的属性
+   	
+		    name | value
+		    -----|-------
+		    url  | 接口地址
+		    type | 指定的请求类型, 不填写则为任意请求类型
+		    callback | 处理接口的回调函数
+		    contentType | 接口处理完成后的请求头 contentType
+		    priority | 接口优先级, 默认为0
 
-也可以这样写
-```
-	answer('/abc', undefined, (data = {}, think) => {
-		return {
-			status: 1,
-			data: `hello ${data.info || ''}!`,
-			info: '请求成功!'
-		}
-	});
-```
+  - 如果不需要返回值可以在callback中返回 `Think.END`
+	```
+	return Think.END;
+	```
 
-如果不需要返回值可以在callback中返回 `END`
-```
-return END;
-```
+  - 如果需要返回一个404错误可以在callback中返回 `Think.NODATA`
+	```
+	return Think.NODATA;
+	```
 
-如果需要返回一个404错误可以在callback中返回 `NODATA`
-```
-return NODATA;
-```
+  - callback 返回值 `data, think`
+  	- data 为前端返回到接口的数据
+	- think think中包含`think.url`, `think.type`, `think.request`, `think.response` 其中`think.request`和`think.response` 参数为node原生参数, 可以通过这些参数来自定义接口返回内容
 
-## Thank!
+ #### 语言
+  - 设置语言使用Think.lang方法进行设置, 改方法只能在option.js中使用, 其他文件使用不生效
+  - 目前只支持`en` 和 `zh`
+  - 需要新增语言, 可以在项目`bin\language\`下新建xx.json, 即可
+ 
+ #### Think 插件/模块
+  - think中可以自定义插件, 定义的插件放置在`bin\tool\`下, 运行时会自动装载, 调用时执行`Think.tool.xxx`
+  
+## Thanks!

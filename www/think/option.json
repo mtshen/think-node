@@ -2,7 +2,10 @@
     "path": "/www",
     "default": ["index.html"],
     "staticresource": ["**/*.*"],
+    "offsprdomain": false,
+    "herf": "www",
     "user": {
-        "path": "/user"
+        "path": "/user",
+        "default": []
     }
 }

@@ -88,7 +88,7 @@ function initUserFilesRoute(AnswerMap, userPath) {
 			nodeInfo.set('nodeList', []);
 			// 定义域缓存
 			Think.$$NODE_CACHE_MAP = nodeInfo;
-
+			
 			try {
 				require(filePath.replace(/\.js$/, ''));
 				AnswerMap.get('nodeList').push(nodeInfo);
@@ -138,6 +138,7 @@ initUserRoute(Answer, $path);
 // 获取数据
 Think.getAnswer = (host) => {
 	if (typeof host !== 'string') return null;
+	if (/^\d{1,4}\.\d{1,4}\.\d{1,4}\.\d{1,4}$/.test(host)) host = 
 	let hostArr = $offsprdomain ? host.split('.') : ['www', '', ''];
 	let rtnanswer = Answer;
 	let seek = false;

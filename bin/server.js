@@ -21,7 +21,6 @@ const route = require('./route/route');
 // Create service
 let {option} = Think;
 
-/* 测试终止
 if (cluster.isMaster) {
     for (
         let i = require('os').cpus().length - 1;
@@ -36,16 +35,7 @@ if (cluster.isMaster) {
         let requestData = '';
         request.on('data', (chunk) => { requestData += chunk; });
         request.on('end', () => route(request, response, requestData));
-    }).listen(option.port, option.ip || undefined);
+    }).listen(option.port, option.ip || undefined, () => Think.onload());
 }
-*/
-
-http.createServer((request, response) => {
-    let requestData = '';
-    request.on('data', (chunk) => { requestData += chunk; });
-    request.on('end', () => route(request, response, requestData));
-}).listen(option.port, option.ip || undefined);
-console.log('\n\n     _________\n    |S T A R T|\n    |ThinkNode|\n     *********'.debug);
-console.log(`ip: ${option.ip || ''}\nport: ${option.port || ''}`.debug);
 
 // complete!

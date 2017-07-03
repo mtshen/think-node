@@ -1,5 +1,4 @@
 const path = require('path');
-__ISMASTER && console.log('load option'.green);
 
 // 设置编码方式
 Think.header('Content-Type:text/html; charset=utf-8');
@@ -45,10 +44,12 @@ Think.opt('LOG_FILETIME', 3600000);
 // NODE文件目录
 Think.opt('USER_PATH', path.join(Think.DIR, 'user'));
 
+// node默认执行文件
+Think.opt('USER_DEFAULT', []);
+
 // debugger模式
 Think.opt('DEBUGGER', false);
 
 // 是否开启子域
 Think.opt('OFFSPRDOMAIN', true);
-
 // ==完成配置信息==

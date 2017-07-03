@@ -62,4 +62,16 @@ think.lang = (l) => {
     think.language = l;
 }
 
+// load功能
+let loadList = [];
+
+think.load = (callback) => {
+    typeof callback === 'function' &&
+        loadList.push(callback);
+};
+
+// 执行load列表
+think.onload = () => loadList.forEach((callback) => callback());
+
+
 module.exports = think;

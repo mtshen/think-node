@@ -10,6 +10,7 @@ const path = require("path");
 const querystring = require('querystring');
 const tool = Think.tool;
 const offsprdomain = (Think.option || {}).offsprdomain || false;
+
 // nodeList接口
 class NodeList {
     constructor(answer) {
@@ -80,7 +81,7 @@ let route = (request, response, requestData) => {
                     let rtn = (typeof cbFlag === 'object' ? JSON.stringify(cbFlag) : cbFlag);
                     response.writeHead(200, {"Content-Type": ContentType});
                     response.end(rtn);
-                    return 
+                    return false;
             };
         } catch (error) {
             // return console.log('出现了一个异常!', error);
