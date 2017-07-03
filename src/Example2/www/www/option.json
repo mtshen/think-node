@@ -1,0 +1,6 @@
+{
+    "path": "/",
+    "default": ["index.html"],
+    "staticresource": ["**/*.*"],
+	"offsprdomain": false
+}

@@ -1,0 +1,26 @@
+{
+    "loadY": "载入完成",
+    "loadN": "载入失败",
+
+    "loadTool": "载入所需插件",
+    
+    "loadOption": "载入配置文件",
+    "loadOptionY": "载入配置文件完成",
+    "loadOptionN": "载入配置文件失败",
+    
+    "loadLeng": "载入语言文件",
+    "loadLengY": "载入语言文件完成",
+    "loadLengN": "载入语言文件失败",
+    
+    "loadUser": "载入用户代码",
+    "loadUserN": "载入用户代码失败",
+    "loadUserY": "载入用户代码完成",
+
+    "loadCache": "载入用户缓存",
+    "loadCacheY": "载入用户缓存完成",
+    "loadCacheN": "载入用户缓存失败",
+    
+    "loadAnswer": "加载用户接口数据",
+    "Y": "完成",
+    "N": "失败"
+}
