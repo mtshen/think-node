@@ -138,7 +138,10 @@ initUserRoute(Answer, $path);
 // 获取数据
 Think.getAnswer = (host) => {
 	if (typeof host !== 'string') return null;
-	if (/^\d{1,4}\.\d{1,4}\.\d{1,4}\.\d{1,4}$/.test(host)) host = 
+
+	/^\d{1,4}\.\d{1,4}\.\d{1,4}\.\d{1,4}$/.test(host) && 
+		(host = Think.option.host + '.x.x');
+
 	let hostArr = $offsprdomain ? host.split('.') : ['www', '', ''];
 	let rtnanswer = Answer;
 	let seek = false;
@@ -154,5 +157,20 @@ Think.getAnswer = (host) => {
 		}
 		if (!rtnanswer) return null;	
 	}
+	let rtnChild = rtnanswer.get('child');
+	if (rtnChild) rtnanswer = getHostDef(rtnanswer);
 	return (seek ? rtnanswer : null);
+}
+
+// 根据option获取下级host answer
+function getHostDef(answer) {
+	let option = answer.get('option');
+	let child =  answer.get('child');
+	let {offsprdomain, host} = option;
+	if (!child && !offsprdomain) 
+		return answer;
+	else 
+		for (let i = child.length - 1; i >= 0; i --)
+		if (child[i].name === host)
+		return getHostDef(child[i].name);
 }

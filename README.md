@@ -65,7 +65,7 @@
   staticresource| 是否继续向下分发子域
   user.path		| node文件位置
   user.default	| 默认执行的node文件位置
-  herf			| 当staticresource为true时, 如果用户只输入了父级域名时, 自动转向一个子域名, 默认 www
+  host			| 当staticresource为true时, 如果用户只输入了父级域名时, 自动转向一个子域, 默认为 `www`
 
 
  #### 快速设置node接口

@@ -1,8 +1,0 @@
-{
-    "path": "/www",
-    "default": ["index.html"],
-    "staticresource": ["**/*.*"],
-    "user": {
-        "path": "/user"
-    }
-}

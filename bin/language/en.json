@@ -1,0 +1,26 @@
+{
+    "loadY": "load complete",
+    "loadN": "load failure",
+
+    "loadTool": "load required plug-ins",
+    
+    "loadOption": "load configure file",
+    "loadOptionY": "load configure file > complete",
+    "loadOptionN": "load configure file > failure",
+    
+    "loadLeng": "load language file",
+    "loadLengY": "load language file > complete",
+    "loadLengN": "load language file > failure",
+    
+    "loadUser": "load user code",
+    "loadUserN": "load user code > complete",
+    "loadUserY": "load user code > failure",
+
+    "loadCache": "load user cache",
+    "loadCacheY": "load user cache > complete",
+    "loadCacheN": "load user cache > failure",
+    
+    "loadAnswer": "load user interface data",
+    "Y": "complete",
+    "N": "failure"
+}

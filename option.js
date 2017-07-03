@@ -9,8 +9,8 @@ Think.timeZone('UTC');
 // 定义文件号
 Think.define('APP_VERSION', () => +new Date);
 
-// 设置语言
-Think.lang('zh');
+// 设置语言, 中文在命令行下可能出现乱码
+Think.lang('en');
 
 // ==定义配置文件, 大小写不敏感==
 
@@ -51,5 +51,8 @@ Think.opt('USER_DEFAULT', []);
 Think.opt('DEBUGGER', false);
 
 // 是否开启子域
-Think.opt('OFFSPRDOMAIN', true);
+Think.opt('OFFSPRDOMAIN', false);
+
+// host
+Think.opt('HOST', 'www');
 // ==完成配置信息==
