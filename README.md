@@ -11,8 +11,8 @@
  #### 示例
   - 项目src中有2个示例作为参考
   - 子域效果可以访问以下地址
-	1. think.mtshen.xin
-	2. help.mtshen.xin
+	- think.mtshen.xin
+	- help.mtshen.xin
 
  #### 快速入门
   1. 下载项目, 并放置在合适的路径中
@@ -84,13 +84,13 @@
 	```
    - 可传入的属性
    	
-		    name | value
-		    -----|-------
-		    url  | 接口地址
-		    type | 指定的请求类型, 不填写则为任意请求类型
-		    callback | 处理接口的回调函数
-		    contentType | 接口处理完成后的请求头 contentType
-		    priority | 接口优先级, 默认为0
+	name | value
+	-----|-------
+	url  | 接口地址
+	type | 指定的请求类型, 不填写则为任意请求类型
+	callback | 处理接口的回调函数
+	contentType | 接口处理完成后的请求头 contentType
+	priority | 接口优先级, 默认为0
 
   - 如果不需要返回值可以在callback中返回 `Think.END`
 	```
