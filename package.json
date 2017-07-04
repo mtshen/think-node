@@ -1,5 +1,5 @@
 {
-  "name": "thinknode",
+  "name": "think-node",
   "version": "1.0.0",
   "description": "ThinkNode是一个免费开源的，快速、简单的面向对象的轻量级Node开发框架",
   "main": "bin/server.js",
