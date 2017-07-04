@@ -30,19 +30,19 @@
 
 
 optName | optValue
-			---|---
-	port	 	| 服务端口, 默认 80
-	ip	 	| 服务ip地址, 默认 0.0.0.0
-	path	 	| 网站根路径地址, 默认项目文件夹/www
-	default	| 网站首页, 必须为数组, 默认['index.html', 'index.htm']
-	staticReSource | 可请求文件限制, 默认['**/*.*'], 如果限制某些文件将无法被请求到
-	log_path | 日志存储目录 *暂时不可用
-	log_auto | 日志是否自动存储 *暂时不可用
-	log_fileTime | 每个日志文件的最大存储范围 *暂不可用
-	log_time | 日志自动存储间隔 *暂不可用
-	user_path| 自定义的node文件地址
-	debugger | 是否缓存文件, 建议测试的时候改成false
-	offsprDomain | 是否开启子域, 默认false
+------|------
+port	 	| 服务端口, 默认 80
+ip	 	| 服务ip地址, 默认 0.0.0.0
+path	 	| 网站根路径地址, 默认项目文件夹/www
+default	| 网站首页, 必须为数组, 默认['index.html', 'index.htm']
+staticReSource | 可请求文件限制, 默认['**/*.*'], 如果限制某些文件将无法被请求到
+log_path | 日志存储目录 *暂时不可用
+log_auto | 日志是否自动存储 *暂时不可用
+log_fileTime | 每个日志文件的最大存储范围 *暂不可用
+log_time | 日志自动存储间隔 *暂不可用
+user_path| 自定义的node文件地址
+debugger | 是否缓存文件, 建议测试的时候改成false
+offsprDomain | 是否开启子域, 默认false
 
  #### staticReSource 请求文件限制
   > 当服务器中有些重要文件不希望公开时使用  
