@@ -61,6 +61,7 @@ let route = (request, response, requestData) => {
     let nodeList = new NodeList(answer);
     let data = nodeList.get(pathname, request);
     if (data) {
+        console.log(`   -> ${pathname}`.inter);
         let {callback, ContentType = 'application/json; charset=utf-8'} = data;
         let cbFlag;
         try {
@@ -84,18 +85,21 @@ let route = (request, response, requestData) => {
                     return false;
             };
         } catch (error) {
-            // return console.log('出现了一个异常!', error);
+            console.log(pathname.error),
+                console.log(ThinkInfo('InterError').error);
         };
 
     } else {
         let option = answer.get('option') || {};
         let _path = option.path;
-        let filePath = path.join(Think.option.path, hostPares(request.headers.host), _path); 
+        // 此处的 _path 是否存在错误
+        let filePath = path.join(_path, hostPares(request.headers.host)); 
         let staticResource = option.staticResource || ['**/*.*'];
         for (let i = staticResource.length - 1; i >= 0; i--) {
             let staticPath = staticResource[i];
             if (minimatch(pathname, staticPath)){
-                let fsName = filePath + pathname;
+                let fsName = path.join(filePath, pathname);
+                console.log(`-> ${fsName}`.file);
                 fs.readFile(fsName, (err, data) => {
                     if (err) {
                         response.writeHead(404);
@@ -124,19 +128,19 @@ function getDefaultPath({response, answer}, index = 0) {
     let indexArr = option.default || Think.option.default;
     let _path = option.path || Think.option.path || '';
     let $default = indexArr[index];
+    
     if (!$default) {
         response.writeHead(404);
 	    response.end();
         return false;
     }
-    fs.readFile(
-        path.join(
-            (offsprdomain ? filePath || '' : ''),
-            _path, $default
-        ), 'utf-8', (err, data) => {
+
+    let $defaultIndex = path.join((offsprdomain ? filePath || '' : ''), _path, $default);
+
+    fs.readFile($defaultIndex, 'utf-8', (err, data) => {
         if (err) return getDefaultPath({response, answer}, index + 1);
         let headInfo = {"Content-Type": tool.contentType(path.extname($default))};
-        
+        console.log(`-> ${$defaultIndex}`.file);
         Think.headerInfo.length && 
             Think.headerInfo.forEach((value) => {
                 valInfo = value.split(':');

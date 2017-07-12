@@ -17,7 +17,7 @@ const _debugger = Think.debugger;
             });
         });
     })
-}), __ISMASTER && console.log(ThinkInfo('loadCache').green);
+}), __ISMASTER && console.log(ThinkInfo('loadCache'));
 
 // 获取缓存内容
 Think.getCache = (url, callback) => {

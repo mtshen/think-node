@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require('fs');
-__ISMASTER && console.log('load option'.green);
+__ISMASTER && console.log('load option');
 
 // 默认option
 Think.option = require(path.join(__dirname, 'defaultOption.json'));

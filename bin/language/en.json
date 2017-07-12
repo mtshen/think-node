@@ -21,6 +21,9 @@
     "loadCacheN": "load user cache > failure",
     
     "loadAnswer": "load user interface data",
+    "InterError": "Interface internal error!",
+    "loadFileError": "node file loading failed!",
+    "loadNodeFiles": "Failed to load node file directory!",
     "Y": "complete",
     "N": "failure"
 }

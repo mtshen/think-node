@@ -21,6 +21,9 @@
     "loadCacheN": "载入用户缓存失败",
     
     "loadAnswer": "加载用户接口数据",
+    "InterError": "接口内部错误!",
+    "loadFileError": "node文件载入失败!",
+    "loadNodeFiles": "加载node文件失败!",
     "Y": "完成",
     "N": "失败"
 }

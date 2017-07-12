@@ -2,7 +2,7 @@
 const path = require('path');
 const fs = require('fs');
 
-__ISMASTER && console.log(ThinkInfo('loadTool').green);
+__ISMASTER && console.log(ThinkInfo('loadTool'));
 
 // 为Think挂载tool
 global.Think.tool = {};
@@ -17,6 +17,6 @@ stat.forEach((file) => {
     let stats = fs.statSync(fileName);
     if (stats.isFile() && /\.js$/.test(fileName)) {
         require(fileName.replace(/\.js$/, ''));
-        __ISMASTER && console.log('   ' + fileName.input);
+        __ISMASTER && console.log('   ' + fileName.file);
     }
 });

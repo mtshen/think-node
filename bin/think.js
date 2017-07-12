@@ -5,8 +5,8 @@ const think = {};
 const tplDefineArr = [];
 
 // 控制台颜色
-colors.setTheme({silly: 'rainbow', input: 'grey', verbose: 'cyan', prompt: 'red', info: 'green', data: 'blue', help: 'cyan', warn: 'yellow', debug: 'magenta', error: 'red'});
-__ISMASTER && console.log('load think'.green);
+colors.setTheme({file: 'grey', error: 'red', true: 'green', data: 'blue', inter: 'cyan', warn: 'yellow', start: 'magenta'});
+__ISMASTER && console.log('load think');
 
 // 常量
 think.END = Symbol('end');

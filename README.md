@@ -1,6 +1,12 @@
 # ThinkNode[![npm version](https://img.shields.io/npm/v/think-node.svg?style=flat)](https://badge.fury.io/js/think-node)
 	ThinkNode是一个免费开源的，快速、简单的面向对象的轻量级Node开发框架
-
+-----
+### 更新
+  - 对控制台更加友好, 所有文件相关内容打印为灰色, 所有接口相关内容打印为青色, 成功信息为绿色, 失败信息为红色
+  - 在控制台中新增了一些错误提示, 方便在调试时定位问题
+  - 解决前端用表单形式传输复杂对象时, 解析不正确的问题
+  - 优化了部分代码
+-----
 ## ThinkNode 1.0 说明
  #### 适用人群
   1. 快速搭建本地站点

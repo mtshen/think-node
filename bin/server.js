@@ -28,8 +28,8 @@ if (cluster.isMaster) {
         i --
     ) cluster.fork();
 
-    console.log('\n\n     _________\n    |S T A R T|\n    |ThinkNode|\n     *********'.debug);
-    console.log(`ip: ${option.ip || ''}\nport: ${option.port || ''}`.debug);
+    console.log('\n\n     _________\n    |S T A R T|\n    |ThinkNode|\n     *********'.start);
+    console.log(`ip: ${option.ip || ''}\nport: ${option.port || ''}`.start);
 } else {
     http.createServer((request, response) => {
         let requestData = '';

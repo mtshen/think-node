@@ -61,14 +61,21 @@ function initUserRoute(AnswerMap, userPath = $path) {
 		return;
 	} else {
 		// 自动存储内容
-		let wwwMap = new Map
-		let statInfo = fs.statSync($userPath);
-		wwwMap.set('fileInfo', statInfo);
-		wwwMap.set('fileUrl', $userPath);
-		wwwMap.set('name', 'www');
-		wwwMap.set('option', Think.option);
-		AnswerMap.set('child', [wwwMap]);
-		initUserFilesRoute(wwwMap, $userPath);
+		try {
+			let wwwMap = new Map
+			let statInfo = fs.statSync($userPath);
+			wwwMap.set('fileInfo', statInfo);
+			wwwMap.set('fileUrl', $userPath);
+			wwwMap.set('name', 'www');
+			wwwMap.set('option', Think.option);
+			AnswerMap.set('child', [wwwMap]);
+			initUserFilesRoute(wwwMap, $userPath);
+		} catch (error) {
+			// TODO
+			__ISMASTER && (
+				console.log($userPath.error),
+				console.log(ThinkInfo('loadNodeFiles').error));
+		}
 	}
 		
 };
@@ -92,9 +99,10 @@ function initUserFilesRoute(AnswerMap, userPath) {
 			try {
 				require(filePath.replace(/\.js$/, ''));
 				AnswerMap.get('nodeList').push(nodeInfo);
-				__ISMASTER && console.log(filePath.input);
+				__ISMASTER && console.log(filePath.file);
 			} catch (error) {
-				__ISMASTER && console.log(filePath.error), console.log(error);
+				// TODO
+				__ISMASTER && console.log(ThinkInfo('loadFileError').error), console.log(filePath.error);
 			};
 			
 			// 结束域缓存
@@ -132,7 +140,7 @@ main.proto = () => Answer;
 // 初始化数据
 Think.answer = main;
  
-__ISMASTER && console.log(ThinkInfo('loadAnswer').green);
+__ISMASTER && console.log(ThinkInfo('loadAnswer'));
 initUserRoute(Answer, $path);
 
 // 获取数据
