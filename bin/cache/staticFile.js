@@ -9,15 +9,17 @@ const staticResource = (Think.option || {}).staticResource || ['**/*.*'];
 const _debugger = Think.debugger;
 
 // 载入用户缓存
-!_debugger && staticResource.forEach((globPath) => {
-    glob(path.join(userPath, globPath),  (err, files) => {
-        !err && files.forEach((fileName) => {
-            fs.readFile(fileName, (err, fileData) => {
-                !err && (CACHE_FILES[path.join(fileName)] = new Buffer(fileData));
+!_debugger && (__ISMASTER && console.log(ThinkInfo('loadCache')),
+    staticResource.forEach((globPath) => {
+        glob(path.join(userPath, globPath),  (err, files) => {
+            !err && files.forEach((fileName) => {
+                fs.readFile(fileName, (err, fileData) => {
+                    !err && (CACHE_FILES[fileName] = new Buffer(fileData));
+                });
             });
-        });
+        })
     })
-}), __ISMASTER && console.log(ThinkInfo('loadCache'));
+);
 
 // 获取缓存内容
 Think.getCache = (url, callback) => {

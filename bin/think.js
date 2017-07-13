@@ -55,7 +55,7 @@ think.define = (key, value, url = '*') => {
 }
 
 // 语言默认为中文
-think.language = 'zh';
+think.language = 'en';
 
 // 设置语言
 think.lang = (l) => {

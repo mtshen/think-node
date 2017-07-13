@@ -24,6 +24,8 @@
     "InterError": "Interface internal error!",
     "loadFileError": "node file loading failed!",
     "loadNodeFiles": "Failed to load node file directory!",
+    "indexError1s": "request",
+    "indexError1n": "fail!",
     "Y": "complete",
     "N": "failure"
 }

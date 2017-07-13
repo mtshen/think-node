@@ -4,16 +4,18 @@ class Stak {
         this.timer = null;
         this.callback = null;
         this.stakList = [];
+        this.flag = 0;
         this.pushStak(arguments);
     }
 
     pushStak() {
         Array.prototype.forEach.call(arguments, function(stak) {
-            typeof stak === 'function' && this.stakList.push(stak);
+            this.flag < 2 && typeof stak === 'function' && this.stakList.push(stak);
         }, this);
     }
 
     start() {
+        this.flag = 1;
         this.timer = setInterval(this.timeFn.bind(this), 1);
     }
 
@@ -22,10 +24,18 @@ class Stak {
         if (stak) 
             stak() 
         else {
-            clearInterval(timer);
+            this.timer && clearInterval(this.timer);
+            this.flag = 2;
             this.callback && this.callback();
         } 
     }
+
+    restart() {
+        this.stakList = [];
+        this.timer && clearInterval(this.timer);
+        this.timer = null;
+        this.flag = 0;
+    }    
 }
 
 Think.tool.stak = Stak;

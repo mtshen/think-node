@@ -61,7 +61,7 @@ let route = (request, response, requestData) => {
     let nodeList = new NodeList(answer);
     let data = nodeList.get(pathname, request);
     if (data) {
-        console.log(`   -> ${pathname}`.inter);
+        console.log(`-> ${pathname}`.inter);
         let {callback, ContentType = 'application/json; charset=utf-8'} = data;
         let cbFlag;
         try {
@@ -138,7 +138,10 @@ function getDefaultPath({response, answer}, index = 0) {
     let $defaultIndex = path.join((offsprdomain ? filePath || '' : ''), _path, $default);
 
     fs.readFile($defaultIndex, 'utf-8', (err, data) => {
-        if (err) return getDefaultPath({response, answer}, index + 1);
+        if (err) {
+            console.log(`${ThinkInfo('indexError1s')} ${$defaultIndex} ${ThinkInfo('indexError1n')}`.error);
+            return getDefaultPath({response, answer}, index + 1);
+        }
         let headInfo = {"Content-Type": tool.contentType(path.extname($default))};
         console.log(`-> ${$defaultIndex}`.file);
         Think.headerInfo.length && 

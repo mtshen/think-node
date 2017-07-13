@@ -61,21 +61,21 @@ function initUserRoute(AnswerMap, userPath = $path) {
 		return;
 	} else {
 		// 自动存储内容
+		let wwwMap = new Map
 		try {
-			let wwwMap = new Map
 			let statInfo = fs.statSync($userPath);
 			wwwMap.set('fileInfo', statInfo);
-			wwwMap.set('fileUrl', $userPath);
-			wwwMap.set('name', 'www');
-			wwwMap.set('option', Think.option);
-			AnswerMap.set('child', [wwwMap]);
-			initUserFilesRoute(wwwMap, $userPath);
 		} catch (error) {
 			// TODO
 			__ISMASTER && (
 				console.log($userPath.error),
 				console.log(ThinkInfo('loadNodeFiles').error));
 		}
+		wwwMap.set('fileUrl', $userPath);
+		wwwMap.set('name', 'www');
+		wwwMap.set('option', Think.option);
+		AnswerMap.set('child', [wwwMap]);
+		initUserFilesRoute(wwwMap, $userPath);
 	}
 		
 };
