@@ -172,8 +172,9 @@ Think.getAnswer = (host) => {
 
 // 根据option获取下级host answer
 function getHostDef(answer) {
-	let option = answer.get('option');
-	let child =  answer.get('child');
+	if (!answer) return null;
+	let option = answer.get('option') || {};
+	let child = answer.get('child');
 	let {offsprdomain, host} = option;
 	if (!child && !offsprdomain) 
 		return answer;

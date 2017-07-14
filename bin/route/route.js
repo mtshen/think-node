@@ -17,7 +17,7 @@ class NodeList {
         this.answer = answer;
         this.nodeList = [];
         (answer.get('nodeList') || []).forEach(function(node) {
-            this.nodeList.push.apply(this.nodeList, node.get('nodeList'));
+            this.nodeList.push(...node.get('nodeList'));
         }.bind(this));
         this.nodeList.sort((nodeA, nodeB) => {
             return (nodeA.priority || 0) - (NodeB.priority || 0);

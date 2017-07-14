@@ -1,15 +1,15 @@
 // 任务系统, 通常用于大数据处理
 class Stak {
-    constructor () {
+    constructor (...staks) {
         this.timer = null;
         this.callback = null;
         this.stakList = [];
         this.flag = 0;
-        this.pushStak(arguments);
+        this.pushStak(...staks);
     }
 
-    pushStak() {
-        Array.prototype.forEach.call(arguments, function(stak) {
+    pushStak(...staks) {
+        staks.forEach(function(stak) {
             this.flag < 2 && typeof stak === 'function' && this.stakList.push(stak);
         }, this);
     }
