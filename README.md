@@ -17,8 +17,10 @@
 
  #### 示例
   - 项目src中有2个示例作为参考
-  - 子域效果可以访问以下地址
-	[示例1](offsprdomain1.mtshen.xin), [示例2](offsprdomain2.mtshen.xin)
+  - 子域效果可以访问以下地址 
+	
+  [示例1](http://offsprdomain1.mtshen.xin/), [示例2](http://offsprdomain2.mtshen.xin/) 
+  
   虽然是一个再简单不过的demo, 但是他们的目录以及API都是相互隔离的!
 
  #### 快速入门
