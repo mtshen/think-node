@@ -18,8 +18,8 @@
  #### 示例
   - 项目src中有2个示例作为参考
   - 子域效果可以访问以下地址
-	- think.mtshen.xin
-	- help.mtshen.xin
+	[示例1](offsprdomain1.mtshen.xin), [示例2](offsprdomain2.mtshen.xin)
+  虽然是一个再简单不过的demo, 但是他们的目录以及API都是相互隔离的!
 
  #### 快速入门
   1. 下载项目, 并放置在合适的路径中
