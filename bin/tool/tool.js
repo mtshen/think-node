@@ -16,7 +16,11 @@ stat.forEach((file) => {
     let fileName = path.join(toolPath, file);
     let stats = fs.statSync(fileName);
     if (stats.isFile() && /\.js$/.test(fileName)) {
-        require(fileName.replace(/\.js$/, ''));
-        __ISMASTER && console.log('   ' + fileName.file);
+        try {
+            require(fileName.replace(/\.js$/, ''));    
+            __ISMASTER && console.log('   ' + fileName.file);
+        } catch (error) {
+            __ISMASTER && (Think.log(fileName, error), console.log('   ' + fileName.error));
+        }
     }
 });

@@ -24,6 +24,7 @@ const route = require('./route/route');
 // Create service
 let {option} = Think;
 
+ 
 if (cluster.isMaster) {
     for (
         let i = require('os').cpus().length - 1;

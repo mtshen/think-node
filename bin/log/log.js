@@ -6,7 +6,12 @@ const logTimeInfo = Think.timeInfo.toUpperCase();
 const timeZone = require('./timeZone.json') || {};
 const timeDeviation = timeZone[logTimeInfo] || 0; 
 let logFileData = {};
-let errorInt = 100000;
+
+let errorInt = (()=> {
+    let {time} = getDate();
+    return Number(time.replace(/:/g, '').slice(0, 6));
+})();
+
 
 // 写入log
 function log(url, error) {

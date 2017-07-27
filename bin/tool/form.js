@@ -2,6 +2,7 @@
     paramForm.js 反编译表单数据
     将深度解析后台返回的表单内容
 */ 
+let {tool} = Think;
 
 Think.tool.paramForm = (text, split = '&', split2 = '=') => {
     let decodeText = decodeURIComponent(text);
@@ -85,3 +86,55 @@ function paramArray(array) {
     });
     return object;
 }
+
+
+
+function buildParams(prefix, obj, traditional = commonOption.traditional, add) {
+    var name;
+    if (Array.isArray(obj)) {
+        obj.forEach(function(v, i) {
+            if (traditional || /\[\]$/.test(prefix)) {
+                // Treat each array item as a scalar.
+                add(prefix, v);
+            } else {
+                // Item is non-scalar (array or object), encode its numeric index.
+                buildParams(
+                    prefix + '[' + (typeof v === 'object' && v != null ? i : '') + ']',
+                    v,
+                    traditional,
+                    add
+                );
+            }
+        });
+
+    } else if (!traditional && tool.is(obj) === 'object')
+        for (name in obj) buildParams(prefix + '[' + name + ']', obj[ name ], traditional, add);
+    else
+        add(prefix, obj);
+}
+
+Think.tool.stringifyForm = function (data, traditional = false) {
+    var prefix;
+    var s = [];
+    var add = function(key, valueOrFunction) {
+
+            // If value is a function, invoke it and use its return value
+            var value = typeof valueOrFunction === 'function' ?
+                valueOrFunction() :
+                valueOrFunction;
+
+            s[s.length] = encodeURIComponent(key) + '=' +
+                encodeURIComponent(value == null ? '' : value);
+        };
+
+    // If an array was passed in, assume that it is an array of form elements.
+    if (tool.is(data) === 'array')
+        data.forEach(data, function(v) {
+            add(v.name, v.value);
+        });
+    else
+        for (prefix in data)
+            buildParams(prefix, data[ prefix ], traditional, add);
+    
+    return s.join('&');
+};
