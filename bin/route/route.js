@@ -61,7 +61,6 @@ let route = (request, response, requestData) => {
     let nodeList = new NodeList(answer);
     let data = nodeList.get(pathname, request);
     if (data) {
-        console.log(`-> ${pathname}`.inter);
         let {callback, ContentType = 'application/json; charset=utf-8'} = data;
         let cbFlag;
         try {
@@ -70,6 +69,10 @@ let route = (request, response, requestData) => {
                 type: method.toLowerCase(),
                 request, response
             }) : true;
+
+            // log
+            Think.log(pathname);
+
             switch (cbFlag) {
                 case Think.END:
                     // 内部已经执行完成, 不需要返回数据了
@@ -85,8 +88,9 @@ let route = (request, response, requestData) => {
                     return false;
             };
         } catch (error) {
+            Think.log(pathname, error);
             console.log(pathname.error),
-                console.log(ThinkInfo('InterError').error);
+            console.log(ThinkInfo('InterError').error);
         };
 
     } else {
@@ -99,9 +103,10 @@ let route = (request, response, requestData) => {
             let staticPath = staticResource[i];
             if (minimatch(pathname, staticPath)){
                 let fsName = path.join(filePath, pathname);
-                console.log(`-> ${fsName}`.file);
                 fs.readFile(fsName, (err, data) => {
                     if (err) {
+                        console.log('404:', fsName.error);
+                        Think.log(fsName, err);
                         response.writeHead(404);
                         response.end();
                     } else {
@@ -109,6 +114,7 @@ let route = (request, response, requestData) => {
                         response.writeHead(200, {"Content-Type": tool.contentType(hz)});
                         tool.hasUtf8(hz) && (data = data.toString());
                         response.end(data);
+                        Think.log(fsName);
                     }
                 });
                 return true;
@@ -139,11 +145,12 @@ function getDefaultPath({response, answer}, index = 0) {
 
     fs.readFile($defaultIndex, 'utf-8', (err, data) => {
         if (err) {
+            Think.log($defaultIndex, err);
             console.log(`${ThinkInfo('indexError1s')} ${$defaultIndex} ${ThinkInfo('indexError1n')}`.error);
             return getDefaultPath({response, answer}, index + 1);
         }
         let headInfo = {"Content-Type": tool.contentType(path.extname($default))};
-        console.log(`-> ${$defaultIndex}`.file);
+        Think.log($defaultIndex);
         Think.headerInfo.length && 
             Think.headerInfo.forEach((value) => {
                 valInfo = value.split(':');

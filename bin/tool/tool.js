@@ -8,7 +8,7 @@ __ISMASTER && console.log(ThinkInfo('loadTool'));
 global.Think.tool = {};
 
 // 装载插件, 同步装载
-let toolPath = path.join(path.dirname(__dirname), 'tool');
+let toolPath = path.join(Think.frontPath(__dirname), 'tool');
 let stat = fs.readdirSync(toolPath);
 
 stat.forEach((file) => {

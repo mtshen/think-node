@@ -26,6 +26,8 @@
     "loadNodeFiles": "Failed to load node file directory!",
     "indexError1s": "request",
     "indexError1n": "fail!",
+    "writerError": "log write failed",
+    "logInfo": "error info",
     "Y": "complete",
     "N": "failure"
 }

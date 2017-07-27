@@ -26,6 +26,8 @@
     "loadNodeFiles": "加载node文件失败!",
     "indexError1s": "请求首页文件",
     "indexError1n": "失败!",
+    "writerError": "日志写入失败",
+    "logInfo": "错误信息",
     "Y": "完成",
     "N": "失败"
 }

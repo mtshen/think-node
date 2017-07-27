@@ -8,10 +8,15 @@ const tplDefineArr = [];
 colors.setTheme({file: 'grey', error: 'red', true: 'green', data: 'blue', inter: 'cyan', warn: 'yellow', start: 'magenta'});
 __ISMASTER && console.log('load think');
 
+think.frontPath = function(url) {
+    let urlArr = path.normalize(url).split(path.sep);
+    return urlArr.slice(0, -1).join(path.sep);
+}
+
 // 常量
 think.END = Symbol('end');
 think.NODATA = Symbol('nodata');
-think.DIR = path.dirname(__dirname);
+think.DIR = think.frontPath(__dirname);
 
 // 请求头默认
 think.headerInfo = [];

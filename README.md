@@ -7,6 +7,7 @@
   - 解决前端用表单形式传输复杂对象时, 解析不正确的问题
   - 优化了部分代码
   - 修复了访问不存在的子域 ThinkNode 崩溃的问题
+  - 重写了日志存储逻辑
 -----
 ## ThinkNode 1.0 说明
  #### 适用人群
@@ -20,7 +21,7 @@
   - 子域效果可以访问以下地址 
 	
   [示例1](http://offsprdomain1.mtshen.xin/), [示例2](http://offsprdomain2.mtshen.xin/) 
-  
+
   虽然是一个再简单不过的demo, 但是他们的目录以及API都是相互隔离的!
 
  #### 快速入门
@@ -45,10 +46,8 @@ ip	 	| 服务ip地址, 默认 0.0.0.0
 path	 	| 网站根路径地址, 默认项目文件夹/www
 default	| 网站首页, 必须为数组, 默认['index.html', 'index.htm']
 staticReSource | 可请求文件限制, 默认['**/*.*'], 如果限制某些文件将无法被请求到
-log_path | 日志存储目录 *暂时不可用
-log_auto | 日志是否自动存储 *暂时不可用
-log_fileTime | 每个日志文件的最大存储范围 *暂不可用
-log_time | 日志自动存储间隔 *暂不可用
+log_path | 日志存储目录
+log_switch | 是否存储日志
 user_path| 自定义的node文件地址
 debugger | 是否缓存文件, 建议测试的时候改成false
 offsprDomain | 是否开启子域, 默认false
@@ -69,8 +68,6 @@ offsprDomain | 是否开启子域, 默认false
   
   > 开启子域后, 文件结构也需要发生变化, 此时设置的`path` 路径, 其中的每个文件夹, 会解析成子域文件夹, 每个子域文件夹中也需要进行配置, 需要增加一个文件option.json
 
-
-
   optName | optValue
   -------|---------
   path			| 子域网站地址, 相对路径
@@ -80,7 +77,14 @@ offsprDomain | 是否开启子域, 默认false
   user.default	| 默认执行的node文件位置
   host			| 当staticresource为true时, 如果用户只输入了父级域名时, 自动转向一个子域, 默认为 `www`
 
-
+ #### log 日志
+  - 每成功或失败一次, 日志都会更新一次 
+  - 开启日志后, 每天生成1个文件夹, 内包含至少2个文件 success.log, fail.log 
+  - success.log 中包含了所有成功的请求, 格式为`[2017.07.18 10:42:22] - http://www.a.com/think/` 
+  - fail.log 中包含了所有错误的请求, 格式为`[100001][2017.07.18 10:42:22] - http://www.a.com/think/` 
+  - 第一个`[100001]` 是该错误的ID, 详细的错误内容在 ID.log 中, 比如ID为 100001 则错误内容在100001.log中
+  
+  
  #### 快速设置node接口
   - 使用 Think.answer 快速定义
 	```

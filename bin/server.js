@@ -9,6 +9,9 @@ global.Think = require('./think');
 // load config
 require('./option');
 
+// load log
+const log = require('./log/log');
+
 // load language
 global.ThinkInfo = require('./language/lang');
 

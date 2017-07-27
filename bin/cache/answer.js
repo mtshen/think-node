@@ -13,6 +13,10 @@ const Answer = new Map;
 
 const {tool} = Think;
 
+// 创建route目录
+tool.createFilesSync($userPath);
+tool.createFilesSync($path);
+
 // 根据地址获取相关js地址, 文件信息, 以及相关函数, 存储到Answer中
 function initUserRoute(AnswerMap, userPath = $path) {
 	// 检查子域是否生效
@@ -67,7 +71,8 @@ function initUserRoute(AnswerMap, userPath = $path) {
 			wwwMap.set('fileInfo', statInfo);
 		} catch (error) {
 			// TODO
-			__ISMASTER && (
+			
+			__ISMASTER && (Think.log($userPath, error),
 				console.log($userPath.error),
 				console.log(ThinkInfo('loadNodeFiles').error));
 		}
@@ -102,7 +107,9 @@ function initUserFilesRoute(AnswerMap, userPath) {
 				__ISMASTER && console.log(filePath.file);
 			} catch (error) {
 				// TODO
-				__ISMASTER && console.log(ThinkInfo('loadFileError').error), console.log(filePath.error);
+				__ISMASTER && (Think.log(filePath, error), 
+					console.log(ThinkInfo('loadFileError').error), 
+					console.log(filePath.error));
 			};
 			
 			// 结束域缓存
