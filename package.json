@@ -1,14 +1,14 @@
 {
   "name": "think-node",
   "version": "1.0.0",
-  "description": "ThinkNode是一个免费开源的，快速、简单的面向对象的轻量级Node开发框架",
+  "description": "thinkNode是一个免费开源的，快速、简单的面向对象的轻量级Node开发框架",
   "main": "bin/server.js",
   "bugs": {
-    "url": "https://github.com/mtshen/ThinkNode",
+    "url": "https://github.com/mtshen/thinkNode",
     "email": "mtshen1997@163.com"
   },
   "keywords": [
-    "ThinkNode"
+    "thinkNode"
   ],
   "author": "mtshen",
   "devDependencies": {

@@ -1,6 +1,6 @@
 Think.answer({
     url: '/think',
     callback: () => {
-        return {text: 'hello Think!'};
+        return {text: 'thinkNode'}
     }
 });

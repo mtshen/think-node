@@ -1,7 +1,7 @@
-# ThinkNode[![npm version](https://img.shields.io/npm/v/think-node.svg?style=flat)](https://badge.fury.io/js/think-node)
-	ThinkNode是一个免费开源的，快速、简单的面向对象的轻量级Node开发框架
+# thinkNode[![npm version](https://img.shields.io/npm/v/think-node.svg?style=flat)](https://badge.fury.io/js/think-node)
+	thinkNode是一个免费开源的，快速、简单的面向对象的轻量级Node开发框架
 
-## ThinkNode 1.0 说明
+## thinkNode 1.0 说明
  #### 适用人群
   1. 快速搭建本地站点
   2. 快速接口调试

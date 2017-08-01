@@ -2,14 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ThinkNode</title>
+    <title>thinkNode</title>
+    <!--  引入css  -->
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 <body>
     <h1></h1>
+    <!--  引入jquery  -->
     <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!--  利用jquery实现一个简单的请求  -->
     <script>
         $.post('/think', function(info) {
             $('h1').html(info.text);
+        })
+        .error(function(error) {
+            document.write(JSON.stringify(error));
         });
     </script>
 </body>
