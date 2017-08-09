@@ -1,5 +1,7 @@
 // load node modules
+const fs = require('fs');
 const http = require('http');
+const https = require('https');
 const cluster = require('cluster');
 global.__ISMASTER = cluster.isMaster;
 
@@ -24,7 +26,26 @@ const route = require('./route/route');
 // Create service
 let {option} = Think;
 
- 
+function createServerCallback(request, response) {
+    let requestData = '';
+    request.on('data', (chunk) => { requestData += chunk; });
+    request.on('end', () => route(request, response, requestData));
+}
+
+function createServer() {
+    http.createServer(createServerCallback).listen(option.port, option.ip || undefined);
+
+    // https
+    let $https = option.https;
+    if ($https.switch && $https.key && $https.cert) {
+        https.createServer({
+            key: fs.readFileSync($https.key, 'utf8'),
+            cert: fs.readFileSync($https.cert, 'utf8')
+        }, createServerCallback).listen($https.port, option.ip || undefined);        
+    } 
+}
+
+if (option.super)
 if (cluster.isMaster) {
     for (
         let i = require('os').cpus().length - 1;
@@ -34,12 +55,8 @@ if (cluster.isMaster) {
 
     console.log('\n     _________\n    |S T A R T|\n    |thinkNode|\n     *********'.start);
     console.log(`\nhttp://${option.ip === '0.0.0.0' ? '127.0.0.1' : option.ip}:${option.port || '80'}/`.start);
-} else {
-    http.createServer((request, response) => {
-        let requestData = '';
-        request.on('data', (chunk) => { requestData += chunk; });
-        request.on('end', () => route(request, response, requestData));
-    }).listen(option.port, option.ip || undefined, () => Think.onload());
+    Think.onload();
 }
-
+else createServer()
+else createServer();
 // complete!

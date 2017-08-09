@@ -8,10 +8,17 @@
         "path": "/log",
         "switch": true
     },
+    "https": {
+        "switch": false,
+        "port": 443,
+        "key": null,
+        "cert": null
+    },
     "user": {
         "path": "/user"
     },
     "debugger": true,
 	"offsprdomain": false,
-    "host": "www"
+    "host": "www",
+    "super": false
 }

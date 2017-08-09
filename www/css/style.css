@@ -1,4 +1,7 @@
 h1 {
+    height: 0;
+    position: relative;
+    top: -1000px;
     text-align: center;
     font-size: 42px;
     font-weight: 900;
@@ -11,9 +14,9 @@ h1 {
 
 @keyframes h1first {
     from {
-        text-shadow: 0 40px 10px #000;
+        text-shadow: 0 1040px 10px #000;
     }
     to {
-        text-shadow: 0 40px 1px #000;
+        text-shadow: 0 1040px 1px #000;
     }
 }
