@@ -42,7 +42,15 @@ function createServer() {
             key: fs.readFileSync($https.key, 'utf8'),
             cert: fs.readFileSync($https.cert, 'utf8')
         }, createServerCallback).listen($https.port, option.ip || undefined);        
-    } 
+    }
+    
+    return true;
+}
+
+function run() {
+    console.log('\n     _________\n    |S T A R T|\n    |thinkNode|\n     *********'.start);
+    console.log(`\nhttp://${option.ip === '0.0.0.0' ? '127.0.0.1' : option.ip}:${option.port || '80'}/`.start);
+    Think.onload();
 }
 
 if (option.super)
@@ -52,11 +60,8 @@ if (cluster.isMaster) {
         i >= 0; 
         i --
     ) cluster.fork();
-
-    console.log('\n     _________\n    |S T A R T|\n    |thinkNode|\n     *********'.start);
-    console.log(`\nhttp://${option.ip === '0.0.0.0' ? '127.0.0.1' : option.ip}:${option.port || '80'}/`.start);
-    Think.onload();
+    run();
 }
 else createServer()
-else createServer();
+else createServer() && run();
 // complete!
