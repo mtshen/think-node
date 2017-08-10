@@ -5,7 +5,7 @@
 	thinkNode是一个免费开源的，快速、简单的面向对象的轻量级Node开发框架
 
  #### 如何创建一个Node服务器
-  1. 安装: `npm install think-node`
+  1. 安装: `npm install -g think-node`
   2. 创建: `think create`
   3. 启动: `think run`
  
