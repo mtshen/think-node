@@ -5,6 +5,7 @@ let {tool} = Think;
 
 let defaultOption = {
     host: '127.0.0.1',
+    port: 80,
     url: '/',
     method: 'get',
     data: {},
@@ -29,6 +30,7 @@ function request({
     delete requestData.data;
     let chunks = [];
     let chunkSize = 0;
+    console.log('requestData:', requestData);
     var req = http.request(requestData, function (res) {
         res.on('data', function (chunk) {
             chunks.push(chunk);
@@ -47,7 +49,7 @@ function request({
     });
 
     req.on('error', function (e) {
-        fail(e);
+        fail && fail(e);
     });
 
     req.end($data);
@@ -61,7 +63,7 @@ function getRequestData(option) {
             option.data = tool.stringifyForm(data);
             break;
         case 'get':
-            option.url  += tool.stringifyForm(data);
+            option.url  += '?' + tool.stringifyForm(data);
             option.data = {};
             break;
     }

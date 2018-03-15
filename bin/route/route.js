@@ -20,7 +20,7 @@ class NodeList {
             this.nodeList.push(...node.get('nodeList'));
         }.bind(this));
         this.nodeList.sort((nodeA, nodeB) => {
-            return (nodeA.priority || 0) - (NodeB.priority || 0);
+            return (nodeA.priority || 0) - (nodeB.priority || 0);
         });
     }
 
@@ -60,6 +60,7 @@ let route = (request, response, requestData) => {
     // 5. 匹配接口
     let nodeList = new NodeList(answer);
     let data = nodeList.get(pathname, request);
+
     if (data) {
         let {callback, ContentType = 'application/json; charset=utf-8'} = data;
         let cbFlag;
@@ -89,8 +90,7 @@ let route = (request, response, requestData) => {
             };
         } catch (error) {
             Think.log(pathname, error);
-            console.log(pathname.error),
-            console.log(ThinkInfo('InterError').error);
+            console.log(`[x]${pathname}(`, ThinkInfo('InterError').error, ')');
         };
 
     } else {

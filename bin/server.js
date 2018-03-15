@@ -37,11 +37,24 @@ function createServer() {
 
     // https
     let $https = option.https;
-    if ($https.switch && $https.key && $https.cert) {
-        https.createServer({
-            key: fs.readFileSync($https.key, 'utf8'),
-            cert: fs.readFileSync($https.cert, 'utf8')
-        }, createServerCallback).listen($https.port, option.ip || undefined);        
+    if ($https.switch) {
+        let httpsOption;
+        if ($https.key && $https.cert) {
+            httpsOption = {
+                key: fs.readFileSync($https.key, 'utf8'),
+                cert: fs.readFileSync($https.cert, 'utf8')
+            };
+        } else if ($https.pfx) {
+            httpsOption = {
+                pfx: fs.readFileSync($https.pfx, 'utf8'),
+                passphrase: $https.pass
+            };
+        }
+        
+        // 创建https服务
+        httpsOption &&
+            https.createServer(httpsOption, createServerCallback)
+                .listen($https.port, option.ip || undefined);        
     }
     
     return true;

@@ -15,5 +15,9 @@
     "colors": "^1.1.2",
     "glob": "^7.1.1",
     "minimatch": "^3.0.4"
+  },
+  "dependencies": {
+    "mysql": "^2.15.0",
+    "request": "^2.83.0"
   }
 }

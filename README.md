@@ -8,9 +8,7 @@
   1. 安装: `npm install think-node`
   2. 创建: `think create`
   3. 启动: `think run`
- 
- #### 这里有 [帮助文档](https://help.mtshen.xin/)、 [示例](https://demo.mtshen.xin/)
- 
+
  ------------------
  
  ## 参数参考
@@ -26,6 +24,7 @@ staticReSource  | ['**/*.*']                    | false |可请的求文件限�
 log_path        | /log                          | true  |日志存储目录
 log_switch      | true                          | false |是否存储日志
 user_path       | /user                         | true  |用户的node存储地址
+user_exclude    |                               | false |排除一些node文件
 debugger        | true                          | false |是否缓存文件
 offsprDomain    | false                         | false |是否开启子域
 host            | www                           | false |开启子域后默认显示的子域地址
@@ -33,6 +32,8 @@ https_switch    | false                         | false |是否开启https
 https_port      | 443                           | false |https端口
 https_key       | null                          | false |https CA私钥地址
 https_cert      | null                          | false |https 通过CA私钥生成的CSR文件地址
+https_pfx       | null                          | false |https 证书地址
+https_pass      | null                          | false |https 证书密码
 super           | false                         | false |是否开启多核模式
 
   #### lang `Think.lang(langName)`
@@ -41,3 +42,4 @@ super           | false                         | false |是否开启多核模�
 --------|---------
 中文    | zh
 英文    | en
+
