@@ -5,14 +5,19 @@
 	thinkNode是一个免费开源的，快速、简单的面向对象的轻量级Node开发框架
 
  #### 如何创建一个Node服务器
-  1. 安装: `npm install -g think-node`
+  1. 安装: `npm install think-node`
   2. 创建: `think create`
   3. 启动: `think run`
-
+ 
+ #### 如何入门? 
+ 请点击这里 [think-node入门](https://img.shields.io/badge/language-nodeJS-red.svg)
+ 
+ #### 关于新版本
+ [think-node 1.1.2 说明](https://img.shields.io/badge/language-nodeJS-red.svg)
  ------------------
  
  ## 参数参考
-  #### option `Think.opt(key, value)`
+  #### option `think.opt(key, value)`
 
 参数项(key) | 默认值(value) | 必选 | 说明
 ----------------|-------------------------------|-------|-----------------------------------
@@ -35,6 +40,7 @@ https_cert      | null                          | false |https 通过CA私钥生
 https_pfx       | null                          | false |https 证书地址
 https_pass      | null                          | false |https 证书密码
 super           | false                         | false |是否开启多核模式
+tool            | null                          | false |自定义的tool挂载
 
   #### lang `Think.lang(langName)`
 

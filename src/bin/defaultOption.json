@@ -1,0 +1,24 @@
+{
+    "port": 8888,
+    "ip": "0.0.0.0",
+    "path": "/www",
+    "default": ["index.html"],
+    "staticresource": ["**/*.*"],
+    "log": {
+        "path": "/log",
+        "switch": true
+    },
+    "https": {
+        "switch": false,
+        "port": 443,
+        "key": null,
+        "cert": null
+    },
+    "user": {
+        "path": "/user"
+    },
+    "debugger": true,
+	"offsprdomain": false,
+    "host": "www",
+    "super": false
+}

@@ -1,6 +1,6 @@
 {
   "name": "think-node",
-  "version": "1.0.3",
+  "version": "1.1.1",
   "description": "thinkNode是一个免费开源的，快速、简单的面向对象的轻量级Node开发框架",
   "main": "bin/server.js",
   "bugs": {
@@ -10,14 +10,24 @@
   "keywords": [
     "thinkNode"
   ],
+  "bin": {
+    "think": "shell/think.js"
+  },
   "author": "mtshen",
   "devDependencies": {
+    "@types/node": "^9.6.1",
     "colors": "^1.1.2",
     "glob": "^7.1.1",
     "minimatch": "^3.0.4"
   },
   "dependencies": {
-    "mysql": "^2.15.0",
-    "request": "^2.83.0"
-  }
+    "yargs": "^11.0.0"
+  },
+  "bundledDependencies": [
+    "yargs",
+    "minimatch",
+    "glob",
+    "colors",
+    "@types/node"
+  ]
 }

@@ -1,0 +1,11 @@
+{
+    "color": {
+        "file": "grey", 
+        "error": "red", 
+        "true": "green", 
+        "data": "blue", 
+        "inter": "cyan", 
+        "warn": "yellow", 
+        "start": "magenta"
+    }
+}
