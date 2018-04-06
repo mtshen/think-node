@@ -1,4 +1,4 @@
-Think.answer({
+think.answer({
     url: '/think',
     callback: () => {
         return {

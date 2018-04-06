@@ -104,4 +104,5 @@ think.load = (callback: Function) => loadList.push(callback);
 // 一个空函数
 think.voidCallback = _ => _;
 
+(global as any).think = think;
 export default think;

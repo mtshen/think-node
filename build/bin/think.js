@@ -82,4 +82,5 @@ think.onload = () => loadList.forEach((callback) => callback());
 think.load = (callback) => loadList.push(callback);
 // 一个空函数
 think.voidCallback = _ => _;
+global.think = think;
 exports.default = think;
