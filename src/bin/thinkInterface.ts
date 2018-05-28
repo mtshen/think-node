@@ -3,6 +3,7 @@ export default interface thinkInterFace {
     END: Symbol;
     NODATA: Symbol;
     DIR: string;
+    Jarvis: any;
 
     // 变量
     headerInfo: string[];

@@ -17,6 +17,9 @@ require("./option");
 require("./tool/tool");
 // 载入日志模块
 require("./log/log");
+// 载入jarvis
+require("./socket/main");
+// 载入路由
 const route_1 = require("./route/route");
 // Create service
 let { option } = think_1.default;

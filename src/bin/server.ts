@@ -17,7 +17,9 @@ import './option';
 import './tool/tool';
 // 载入日志模块
 import './log/log';
-
+// 载入jarvis
+import './socket/main';
+// 载入路由
 import route from './route/route';
 
 // Create service
