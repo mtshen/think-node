@@ -36,7 +36,7 @@ exports.is = (content) => {
     if (content === null)
         return 'null';
     if (content.nodeType)
-        return 'domElement';
+        return 'element';
     if (typeof content === 'object' && Object.prototype.toString.call(content) === '[object Array]')
         return 'array';
     if (content.length && typeof content.length === 'number' && content.length > -1)

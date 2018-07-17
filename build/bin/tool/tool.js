@@ -11,6 +11,7 @@ const copy_1 = require("./copy");
 const createfiles_1 = require("./createfiles");
 const form_1 = require("./form");
 const stak_1 = require("./stak");
+const random_1 = require("./random");
 const __ISMASTER = cluster.isMaster;
 __ISMASTER && console.log(think_1.default.info('loadTool'));
 think_1.default.tool = {
@@ -18,7 +19,8 @@ think_1.default.tool = {
     createFileSync: createfiles_1.createFileSync, createFilesSync: createfiles_1.createFilesSync,
     createFile: createfiles_1.createFile, createFiles: createfiles_1.createFiles, Stak: stak_1.Stak,
     stringifyForm: form_1.stringifyForm.bind(think_1.default.tool),
-    paramForm: form_1.paramForm.bind(think_1.default.tool)
+    paramForm: form_1.paramForm.bind(think_1.default.tool),
+    TestModel: random_1.TestModel,
 };
 const THINK_TOOL_URL = think_1.default.option.tool;
 // 装载第三方函数, 同步装载

@@ -10,7 +10,7 @@ import {copy, is} from './copy';
 import {createFileSync, createFilesSync, createFile, createFiles} from './createfiles';
 import {stringifyForm, paramForm} from './form';
 import {Stak} from './stak';
-
+import {TestModel} from './random';
 const __ISMASTER: boolean = cluster.isMaster;
 __ISMASTER && console.log(think.info('loadTool'));
 
@@ -19,7 +19,8 @@ think.tool = {
     createFileSync, createFilesSync,
     createFile, createFiles, Stak,
     stringifyForm: stringifyForm.bind(think.tool),
-    paramForm: paramForm.bind(think.tool)
+    paramForm: paramForm.bind(think.tool),
+    TestModel: TestModel,
 };
 
 const THINK_TOOL_URL: string = think.option.tool;

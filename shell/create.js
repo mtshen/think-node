@@ -5,13 +5,16 @@ const version = thinkOption.version;
 // 目录
 const form = path.join(__dirname, '../build');
 const src = path.join(__dirname, '../src');
+
+// copy非js文件
 const list = [
     'bin/console.json',
     'bin/defaultOption.json',
     'bin/tool/contentType.json',
     'bin/log/timeZone.json',
     'bin/language/zh.json',
-    'bin/language/en.json'
+    'bin/language/en.json',
+
 ];
 
 module.exports = {
@@ -49,14 +52,27 @@ module.exports = {
                 readable.pipe(writable);
             });
 
+            // README的位置跟其他的不太一样, 所以单独处理
+            let readmeSrcPath = path.join(src, '../README.md'),
+                readmeDstPath = path.join(to, '/README.md');
+            let readmeReadable, readmeWritable;
+            readmeReadable = fs.createReadStream(readmeSrcPath);//创建读取流
+            readmeWritable = fs.createWriteStream(readmeDstPath);//创建写入流
+            readmeReadable.pipe(readmeWritable);
+            
             // 载入demo
             let demoWwwPath = path.join(__dirname, '../www');
             let demoUsePath = path.join(__dirname, '../user');
+            let demoDocsPath = path.join(__dirname, '../docs');
+            let demoVsCodePath = path.join(__dirname, '../.vscode');
             fs.mkdirSync(path.join(to, 'www'));
             fs.mkdirSync(path.join(to, 'user'));
+            fs.mkdirSync(path.join(to, 'docs'));
+            fs.mkdirSync(path.join(to, '.vscode'));
             copy(demoWwwPath, path.join(to, 'www'));
             copy(demoUsePath, path.join(to, 'user'));
-
+            copy(demoDocsPath, path.join(to, 'docs'));
+            copy(demoVsCodePath, path.join(to, '.vscode'));
             // 成功信息
             console.log(say(fileName));
         });
