@@ -6,7 +6,7 @@ export default interface thinkInterFace {
     Jarvis: any;
 
     // 变量
-    headerInfo: string[];
+    headerInfo: any;
     timeInfo: string;
     option: any;
     tool: any;

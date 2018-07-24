@@ -166,12 +166,7 @@ function getDefaultPath({ response, answer }, index = 0) {
         let headInfo = { "Content-Type": tool.contentType(path.extname($default)) };
         // 控制台日志
         think_1.default.log($defaultIndex);
-        think_1.default.headerInfo.length &&
-            think_1.default.headerInfo.forEach((value) => {
-                let valInfo = value.split(':');
-                headInfo[valInfo[0]] = valInfo[1];
-            });
-        response.writeHead(200, headInfo);
+        response.writeHead(200, Object.assign({}, headInfo, think_1.default.headerInfo));
         response.end((typeof data === 'object' ? JSON.stringify(data) : data));
     });
 }

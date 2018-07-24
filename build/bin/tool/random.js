@@ -137,11 +137,7 @@ let randomTestData = function (reference, config = {}) {
     // 由于该函数只能处理object类型包裹的数据, 
     // 如果遇到非object类型数据则包裹一层再次处理, 并返回结果
     if (typeof reference !== 'object') {
-        const $reference = { reference };
-        let $config = config;
-        if (typeof config !== 'object') {
-            $config = { reference: config };
-        }
+        const $reference = { reference }, $config = { reference: config };
         const $data = randomTestData($reference, $config);
         return $data.reference;
     }

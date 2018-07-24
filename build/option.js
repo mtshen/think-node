@@ -11,7 +11,11 @@ const path = require('path');
 // #
 // 设置请求头, 这里的请求头会在所有接口中加入, 非必填
 // 一般不需要设置, 每个文件的请求头都会被自动设置
-// think.header('Content-Type:text/html; charset=utf-8');
+think.header("Content-Type", 'text/html; charset=utf-8');
+// 跨域解决方案
+think.header("Access-Control-Allow-Origin", "*");
+think.header("Access-Control-Allow-Headers", "X-Requested-With");
+think.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
 // #
 // #
 // 设置国际化, 默认为zh, 需要配合 think.info 使用, 非必填

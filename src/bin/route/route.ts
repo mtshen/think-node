@@ -186,14 +186,7 @@ function getDefaultPath({response, answer}, index = 0) {
 
         // 控制台日志
         think.log($defaultIndex);
-
-        think.headerInfo.length && 
-            think.headerInfo.forEach((value) => {
-                let valInfo = value.split(':');
-                headInfo[valInfo[0]] = valInfo[1];
-            });
-
-        response.writeHead(200, headInfo);
+        response.writeHead(200, {...headInfo, ...think.headerInfo});
 		response.end((typeof data === 'object' ? JSON.stringify(data) : data));
     });
 };

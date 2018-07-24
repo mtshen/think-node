@@ -24,9 +24,11 @@ think.END = Symbol('end');
 think.NODATA = Symbol('nodata');
 think.DIR = think.frontPath(__dirname);
 // 请求头默认
-think.headerInfo = [];
+think.headerInfo = {};
 // 设置请求头
-think.header = (responeHeaders) => think.headerInfo.push(responeHeaders);
+think.header = (headerName, headerValue) => {
+    think.headerInfo[headerName] = headerValue;
+};
 // 默认时区
 think.timeInfo = 'GMT';
 /**
